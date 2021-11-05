@@ -1,0 +1,572 @@
+\documentclass{report}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[fontsize=14]{fontsize}
+\usepackage{wrapfig}
+\usepackage{utopia}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+\usepackage{xifthen}
+\usepackage{xargs}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\graphicspath{{./images/}}
+
+\urlstyle{same}
+
+\setlength\parskip{1em}
+
+\newcommandx{\articulo}[6][3=,4=,5=,6=]{
+  \newpage
+  \section{#1}
+  \begin{flushright}
+    \textbf{#2}
+    \ifthenelse{
+      \isempty{#3}}
+    {}
+    {\href{#3}{\includegraphics[height=1em]{facebook.png}}}
+    \ifthenelse{
+      \isempty{#4}}
+    {}
+    {\href{#4}{\includegraphics[height=1em]{twitter.png}}}
+    \ifthenelse{
+      \isempty{#5}}
+    {}
+    {\href{#5}{\includegraphics[height=1em]{instagram.png}}}
+    \ifthenelse{
+      \isempty{#6}}
+    {}
+    {\href{#6}{\includegraphics[height=1em]{youtube.png}}}
+  \end{flushright}
+}
+
+\titleformat{\section}
+{\huge\bfseries\center}
+{}
+{0em}
+{}
+[{\titlerule[3pt]}]
+
+\titlespacing{\section}
+{0pt}
+{0pt}
+{1em}
+
+\titleformat{\chapter}
+{\Huge\bfseries\center}
+{}
+{0em}
+{}
+[{\titlerule[3pt]}]
+
+\titlespacing{\chapter}
+{0pt}
+{-44pt}
+{1em}
+
+\newcommand{\ponerPortada}{
+  \AddToHook{shipout/background}{
+    \put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{portada.png}}
+  }
+}
+
+\newcommand{\ponerFondo}{
+  \AddToHook{shipout/background}{
+    \put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{enmarcado.png}}
+  }
+}
+
+\newcommand{\ponerFondoSimple}{
+  \AddToHook{shipout/background}{
+    \put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{paper.jpg}}
+  }
+}
+
+\begin{document}
+\pagenumbering{alph}
+\newgeometry{margin=0cm}
+\thispagestyle{empty}
+\ponerPortada
+
+\begin{center}
+  \includegraphics[width=\textwidth]{titulo.png}
+\end{center}
+
+
+\restoregeometry
+\pagenumbering{Roman}
+\ponerFondo
+\thispagestyle{empty}
+\hspace{0pt}
+\vfill
+\begin{center}
+  \includegraphics[width=\textwidth]{fantasma.png}
+\end{center}
+\vfill
+\hspace{0pt}
+
+\chapter{Nota Editorial}
+
+El invierno ya acecha entre las ramas desnudas, coloridos monstruos caminan en nuestras calles y los cementerios comienzan a llenarse color y recuerdos. No es sorpresa alguna que esta sea mi época favorita considerando que cree una revista basada en un alegre cadáver. El inicio de Cráneo Feliz fue uno de atrevida ignorancia ¿Cómo hacer una revista? ¿Qué es eso de tipografía? ¿Qué es distribución y con que se come? Tomó un salto de fe ciego y un poco de investigación desesperada para lanzar el proyecto al mundo.
+
+Lleva existiendo poco tiempo en el gran esquema de las cosas, sin embargo, mentiría si dijera que imaginaba así al segundo número. Creí que a lo sumo tendría unas dos colaboraciones y quizás un dibujo de un pato. Ahora me veo no solo con un creciente número de increíbles colaboraciones sino también con el apoyo de grandes amistades que tienen la paciencia para recibir instrucciones de alguien que comprende mucho mas como aferrar un lápiz que llevar un equipo editorial.
+
+El año se escapa de entre nuestros dedos como arena y siento emoción por lo que traerá el futuro. Disfruta, desconocido lector, lo que ha traído para nosotros la comunidad y espero verte pronto.
+
+\begin{flushright}
+  \noindent\includegraphics[width=3cm]{terry.png}
+\end{flushright}
+
+\chapter{Agradecimientos}
+
+Queremos dar un agradecimiento especial a la revista \textit{Amazing Stories} por haber hecho mención de nuestro primer número. Es una inesperada alegría saber que nuestro proyecto emergente ya está en el radar de obras con tanta trayectoria como la de \textit{Amazing Stories}.
+
+\begin{center}
+  \includegraphics[width=10cm]{amazing.png}
+\end{center}
+
+También queremos agradecer a \textit{Coffee \& Dragons} por su continuo apoyo y por ser un espacio de crecimiento y experimentación para toda la comunidad de tabletops de Puebla. La cafetería mantiene latiendo con fuerza al corazón rolero de la ciudad al crear mesas como “ten candles”, construir dinámicas, espacios de difusión y concursos. Hagan el viaje a alguna de sus tres locaciones y mándenles un saludo de nuestra parte a \href{https://www.facebook.com/coffeeandragons}{\textbf{\textit{Coffee \& Dragons}}}
+
+\begin{center}
+  \includegraphics[width=8cm]{coffee.jpg}
+\end{center}
+
+Cráneo Feliz se enorgullece en presentar a nuestro miembro mas reciente \textbf{Ayathara}, quien se encargara de todas nuestra redes sociales, para mantenerlos informados sobre nuestras convocatorias, asi como en lo que estamos trabajando.
+
+\begin{center}
+  \begin{minipage}{0.8\textwidth}
+    \textit{Hola roleros!!! Mi nombre es Ayathara y soy adicta al vino, al rock y al rol. Actualmente ha cambiado mucho el panorama de los juegos de rol y por suerte se ha vuelto cada vez más y más  se vuelve una actividad accesible y popular, de este modo me enfrasque en esta  aventura llamada “D\&D”. No fue por haberlo visto en  series como Stranger Things, si no gracias a un novio muy vicioso y un amigo muy insistente, así que “heme aquí”  sumergida en seguir las partidas de otros jugadores y en sus mundos de fantasía y las aventuras de sus personajes. ¡¡¡So let's rock my world, babys!!!}
+  \end{minipage}
+\end{center}
+
+Y último, pero no menos importante, queremos dar las gracias a todos nuestros colaboradores que participaron en este número:
+
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+  \item Aedaniel
+  \item Aztharthea
+  \item Marco Antonio Herrera Díaz
+  \item José Luis Zárate
+  \item Jorge Armando Ibarra Ricalde
+  \item Jorge Elandre
+  \item Alejandro
+  \item Julieta Cosmos
+  \item RaGV
+  \item Miguel Andrade
+  \item Nan
+  \item Daniela Paredes
+  \item María Yazmín Velázquez López (Mavel)
+  \item WarMike
+  \item Victorzluna
+\end{itemize}
+
+
+\setlength{\parskip}{0em}
+\tableofcontents
+\setlength{\parskip}{1em}
+
+\chapter{LITERATURA}
+\pagenumbering{arabic}
+
+\begin{center}
+  \includegraphics[width=15cm,keepaspectratio]{literatura.png}
+\end{center}
+
+\articulo{Un ladrón}{José Luis Zárate}[https://www.facebook.com/joseluis.zarate][https://twitter.com/joseluiszarate]
+{\parindent0pt
+El ladrón miró su herida, era fresca, larga, dentada, imposible de cerrar.
+
+Estaba demasiado lejos de toda ayuda, pero tampoco es que se pudiera hacer mucho.
+
+Era mortal al parecer.
+
+Así es la vida. se dijo, mientras se acomodaba en el piso.
+
+Todo ladrón sabe que los Emperadores se hacen enterrar en palacios con mil sirvientes e innumerables lujos. Robó tantas tumbas que llegó a apreciar esa sencilla precaución.
+
+Él sólo procuró tener a la mano su pequeño estilete, un arma mediocre, en realidad, tan delgada que se dobla ante la armadura más delgada o la costilla más gruesa,  pero muy útil contra cerraduras y candados.
+
+Tenía planeado usar ese fino acero en el otro mundo.
+
+Pensó en la ladrona suprema, quien al final le quita todo a Emperadores y ladrones. Bien, que se cuide.
+
+Sonríe, mientras se apaga, pensando en todo lo que puede robarle a la Muerte.
+\begin{center}
+  \noindent\includegraphics[height=5cm,keepaspectratio]{tattoo.png}
+\end{center}
+}
+
+\articulo{El di-em}{Daniela Paredes}
+\begin{center}
+  \begin{minipage}{0.5\textwidth}
+    \begin{center}
+      Ahí estaba el di-em sentado\\
+      Pensando en qué inventar\\
+      Porque sus jugadores no dejaban\\
+      De la taberna intentar quemar\\
+      \vspace{1em}
+      Llegó la alta y flaca\\
+      Con su sonrisa perspicaz\\
+      “Yo te ayudo, mi querido amigo”\\
+      Y se le acercó a susurrar\\
+      \vspace{1em}
+      La cara del joven cambió\\
+      Los ojos grandes, la boca abierta,\\
+      El lápiz rápido movió\\
+      Y, aquellos pobres incautos\\
+      No saben ni qué les pegó\\
+      \vspace{1em}
+      El bardo, la druida y el mago,\\
+      Pobrecitos, no dejaban de llorar\\
+      La calaca reía y emocionada\\
+      También se acercó a jugar\\
+      \vspace{1em}
+      Arriba, abajo,\\
+      Por detrás y de frente\\
+      Una jarra, un banco\\
+      Volaban de repente\\
+      \vspace{1em}
+      Aquella tarde no olvida\\
+      La alta, flaca y... destruida\\
+      “Ay pobre calaca”, decían\\
+      Y el di-em solo reía.
+    \end{center}
+  \end{minipage}
+\end{center}
+\begin{flushright}
+  \noindent\includegraphics[height=3cm]{eldm.png}
+\end{flushright}
+
+\articulo{¿A qué te suena juego de rol?}{Jorge Armando Ibarra Ricalde}[https://www.facebook.com/NRNCCOLECTIVO/][][][https://www.youtube.com/c/ElPredicaRol]
+
+“Juego de rol”. La frase te suena familiar, pero no estás seguro donde fue que lo escuchaste la primera vez, o la última. A veces incluso crees que sabes la respuesta, algo que ver con la psicología, el sexo, o los videojuegos, o todos juntos, porque cuando piensas en juego de rol, se formula una imagen en tu cabeza; pero tras ponerle cuero, quitarle diván o aumentarle los gráficos, te das cuenta de lo poco clara que es, ¿y sabes qué? No es de preocuparse, los juegos de rol (porque son varios) están escondidos a plena vista, es lo que Leonard y Sheldon juegan en Big Bang Theory, es lo que los niños jugaban al principio de E.T. en 1982, y es lo que juegan al inicio de Stranger things en 2016. Están en Shrek Tercero como en Community, y ahora más que nunca, con Vin Diesel, dame Judy Dench y Sasha Grey entre muchos famosos diciendo que juegan rol, tienen una popularidad que no habían conocido antes.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \noindent\includegraphics[width=0.38\textwidth]{dndlogo.png}
+  \end{center}
+\end{wrapfigure}
+
+Nacidos en 1974 del genio de Gary Gygax y Dave Arneson en Lake Geneva, Wisconsin,  como un nuevo acercamiento a los populares juegos de guerra (esos de los soldaditos pintados recreando batallas), para llevarlos al terreno de la fantasía heroica de corte tolkeniano bajo el nombre Dungeons \& Dragons, este juego se distinguió por “reducirse a lápiz y papel”, no como los elementos decisivos del juego, sino como la llave para darle rienda suelta a la imaginación.
+
+De ahí que te suenen tan familiares, pues D\&D, además de ser el primer juego de rol es también una marca que se escurre en todos lados, desde juegos de mesa, miniaturas, videojuegos y ahora hasta el popular trading card game, Magic The Gathering, con películas, series y si los fans se dejan hasta funkos.
+
+Mas no todos los juegos de rol son D\&D, de hecho, las 5 ediciones que existen (algunos dirán 8), representan un pequeñísimo porcentaje de la vasta cultura que son los juegos de rol, muchos de los cuales nacieron para darle versatilidad a la propuesta original, y que abarcan todos los gustos posibles. Enserio, todos. Pues si alguna vez quisiste encarnar  un pirata del caribe, un Dios, un otaku en Japón, un miembro de la comunidad del anillo o un infeliz con un libro sobre los terrores cósmicos de Lovecraft, los juegos de rol lo tienen. Sean franquicias como Cazafantasmas, 007, Starshiptroopers, Alien o Diablo. Grandes representantes literarios como La canción de fuego y hielo, Conan, Elric o el mito de Pendragón, videojuegos como World of Warcraft o Everquest, o de plano caricaturas como Rick y Morty, Hora de Aventura y Steven Universe, todos y cada uno de ellos los hay en juego de rol. Es más, si alguna vez has pensado que tu vida está constantemente amenazada por la posibilidad de que una vaca te caiga del cielo, Kobolds Eat My Babies lo hará realidad.
+
+\noindent\textbf{¿Pero qué son?, ¿cómo se comen? o ¿dónde se compran?}
+
+No existe mayor tentación que explicar los juegos de rol comparándolos con otra cosa, el equivalente estadounidense a medir con lo que sea excepto el sistema métrico decimal, así que me abstendré de ello y lo diré tan simple como llanamente me sea posible; los juegos de rol son una actividad grupal, en la que de manera oral, un narrador va describiendo una serie de eventos que los jugadores, interpretando el rol de un alter ego creado por ellos, genera el juego en el que se sumergen como no es posible hacerlo en ningún otro juego.
+
+\begin{wrapfigure}{l}{0.4\textwidth}
+  \begin{center}
+    \noindent\includegraphics[width=0.38\textwidth]{pathfinder.png}
+  \end{center}
+\end{wrapfigure}
+
+Tan sencillo como es de leerlo, no es tan sencillo imaginarlo, y sin embargo, jugarlo es la cosa más simple del mundo, pues se basa en tomar decisiones que van alterando el mundo que percibe el jugador en un ciclo infinito de retroalimentación, pues cuando el narrador describe una escena en la que el grupo (los personajes de los jugadores) está en una jungla huyendo, solo para encontrar que deberán pelear contra una horda de fanáticos enardecidos por el robo del ídolo sagrado o cruzar el peligroso puente colgante que a simple vista demuestra ser una trampa mortal, es entonces que a la pregunta “¿Qué haces?”, cada jugador podrá decidir que hace y dice, según la personalidad de su personaje, y por si no fuera suficientemente estresante, una cosa es lo que se pretende hacer y otra lo que sucede, pues para resolver si la bravata evita que los fanáticos avancen, si la bala acierta, se esquiva la flecha o si logran cruzar el puente, cada jugador debe lanzar dados, cuyo resultado determinará qué sucede. Si tan solo esos dados fueran el cubo que se están imaginando, todo sería más sencillo, pero la realidad es que cuando se habla de dados en el rol, se habla de todos los sólidos platónicos conocidos, más varios poliedros y otras cosas más raras, todas la cuales se leen de diferentes maneras según el juego.
+
+Sobre el cómo se come, se sorprenderán en saber que el platillo principal es el tiempo, pues la sesión de juego promedio dura 3 horas, pudiendo extenderse en maratones que, incluso tras 18 horas de juego, solo se pausan hasta la siguiente sesión, que puede ser en una semana, al día siguiente, y que tras eso puede durar años, sin necesidad real de un final, pues la mayor parte de las veces un jugador de rol tiene múltiples mesas con diferentes personas en diferentes juegos y tramas, por lo que al menos, es fácil localizar un entusiasta dispuesto a mostrarnos el camino, como es igualmente sencillo llegar a alguna de las tiendas especializadas en las que podremos comprar aquellos misteriosos dados, así como los manuales que contienen todas las reglas y consejos necesarios para echar a andar el juego.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \noindent\includegraphics[width=0.38\textwidth]{warhammer.png}
+  \end{center}
+\end{wrapfigure}
+
+Curiosamente, la mala maña de usar las comparaciones para explicar qué es un juego de rol proviene de los mismos manuales, que por cierto, también suelen distinguir entre el narrador y los jugadores, como los dos tipos de participantes en un juego de rol, cuando en realidad es una distinción bastante ociosa, pues en el juego todos narran sus acciones, e incluso el famoso narrador, a menudo llamado “máster” por el vocablo original Dungeonmaster, también juega, así que es un jugador.  Sin embargo, la claridad con la que hoy podemos explicar que es, qué lo diferencia de los videojuegos de rol (como Mass Effect, que por cierto también tiene juego de rol), del role playing sexual, o de las terapias de intercambio de roles, es porque los años donde jugar rol era un asunto de nerds que debían esconder su pasatiempo quedaron mayormente en el pasado y fueron sustituidos por entusiastas que los organizan en actividades culturales (museos, casas de cultura y galerías), artísticas (como su participación en el Día Mundial del Arte y con eventos internacionales que recorrieron todo el continente), académicas como los 5 Coloquios de Estudios sobre juegos de rol que han sido recibidos por UAM, Ibero, Tec de Monterrey y la Universidad Autónoma de Baja California, y vamos, hasta fue una actividad del programa Prepa Sí.
+
+Así que ahora que sabes que son los juegos de rol, solo resta decidir cuándo es que te vas a acercar a ellos, y claro, tras tantas palabras es posible que pienses que es algo demasiado grande y complejo para ti, cuando de hecho es todo lo contrario, es algo enteramente tuyo, por lo que su resultado será proporcional al tiempo y pasión que le dediques, que te puedo asegurar será grandioso, pues conocerás algo de ti que no sabías que estaba ahí, pero que lleva toda la vida esperando a que alguien le diga:
+
+“¿Qué haces?” Un hechizo sencillo, pero que te enamora de un juego que conoces, aunque no hayas probado.
+
+\articulo{Mitos y Realidades del Rol}{Jorge Armando Ibarra Ricalde}[https://www.facebook.com/NRNCCOLECTIVO/][][][https://www.youtube.com/c/ElPredicaRol]
+
+{\parindent0pt
+
+\textbf{¿Los juegos de rol son caros?}
+
+Mito. Aunque para ilustrarlos a menudo se usan fotos con grandes escenarios e irónicamente miniaturas (pues el primer juego se alejaba de eso), la realidad es que no es exageración decir que solo se requiere lápiz y papel, aunque, para que funcionen es necesario que el narrador/master haya leído un manual, miles de los cuales son gratuitos y en línea, mientras que los juegos nuevos de las grandes franquicias rondan los \$1000, mucho menos que los videojuegos de hoy. Los dados pueden costar tan baratos como \$100 o menos, y los lápices aunque a casi \$10 pesos cada uno, sirven para hacer muchos trucos de magia y ya traen goma integrada.
+
+\textbf{¿Los juegos de rol requieren complicados cálculos?}
+
+Mito. Los primeros juegos de rol usaban sumas y restas que la gente percibió como complicadas, en realidad no lo eran, pero de todas maneras los sistemas se han pulido y los actuales resultan muy sencillos. Si viste o escuchaste de uno sumamente complicado que requería hacer funciones y matrices para jugarse, es porque alguien quería jugar eso, tú puedes elegir uno tan sencillo como lanzar una moneda.
+
+\textbf{¿Es mejor empezar a jugar rol desde pequeño?}
+
+Mito. Los juegos de rol son algo tan humano que se parece al “juguemos a ser… policías y ladrones/ indios y vaqueros/ mamá y papá”, los grandes juegos de la tierna infancia, excepto que los juegos de rol son estructurados. Sin embargo, el momento correcto para disfrutarse es cuando el jugador ya puede leer y escribir/hacer aritmética, de forma que él mismo pueda manipular el juego para poderlo disfrutar a su manera. Antes de eso, los niños no requieren del juego de rol, porque lo traen en él.
+
+\textbf{¿Los juegos de rol atraen gente horrible?}
+
+Mito. Las cosas bonitas atraen gente horrible. El rol es muy bonito, pero no tienes por qué fumarte a nadie, si una mesa de juego no te gusta, salte y busca otra, o fórmala. Que sigan los dados rodando.
+
+\textbf{¿Los juegos de rol tienen otras aplicaciones además del ludismo?}
+
+Realidad. Los juegos de rol se han abierto casi todos los espacios, especialmente por sus muchas bendiciones pedagógicas, sin embargo, es importante que recuerdes que antes que nada es un juego, por lo que salvo que haya sido diseñado con un fin específico, dejará ver sus bendiciones en forma de un mejor acervo lingüístico, menos titubeos en la toma de decisiones, trabajo en equipo y empatía, la habilidad quintaesencial que siempre mencionada, brilla por su ausencia.
+
+\textbf{¿Los juegos de rol son un pasatiempo oculto?}
+
+Realidad… hace mucho tiempo. Ahora los encuentras albergados en la Secretaría de Cultura y otras instancias, porque los roleros de México se tomaron enserio ofrecerlo para todos, en todas partes.
+
+\textbf{¿Los roleros tienen sociedades secretas y cambian sus nombres?}
+
+Mito. En México hay muchos clubs informales que gracias a la cohesión de los juegos de rol se han creado identidades sobre las que gravitan sus miembros. Sí, hay apodos, sí hay códigos, pero son los mismos que encuentras en cualquier lugar donde el trabajo de equipo destaque. Así que con los años, tu mesa de rol, es de hecho una familia que elegiste.
+
+\textbf{¿Hay una tesis de doctorado sobre Dungeons \& Dragons?}
+
+Cierto. Se llama “La narrativa experiencial como propuesta teórico metodológica al campo de la comunicación y su aplicación en dos grupos de juego de Calabozos y Dragones” del Doctor Mauricio Rangel Jimenez. Y junto a ella, hay todos los estudios académicos que puedan imaginar.
+
+\textbf{¿Los jugadores de rol son los mejores amantes?}
+
+Realidad. Los jugadores de rol aman el juego de rol. Y tienen poco tiempo para ser infieles, así que punto para ellos.
+
+\textbf{TL:DR}
+
+Es una actividad cooperativa en la que los participantes a través de la narración a menudo estructurada logran una experiencia única y personal que se modifica constantemente gracias a la retroalimentación adquirida, en el marco de un sistema de reglas con variables de azar.
+}
+
+
+\articulo{La Siguiente Partida}{Marco Antonio Herrera Díaz}[https://es-la.facebook.com/marcoantonio.herreradiaz][https://twitter.com/marcokorps][https://www.instagram.com/marcoahd/]
+
+Arsenio y yo nos reunimos frente a mi departamento como todos los miércoles por la noche, para después pasar por Eme, Enedina y Fiacro. Juntos caminamos hacia el edificio contiguo. Nos reunimos en el departamento de Perpetuo, para continuar con la siguiente partida de rol. En nuestra adolescencia nos conocimos, pero seguimos reuniéndonos todas las semanas. Tenemos bastante tiempo haciéndolo, que ya ni recuerdo cuando iniciamos. Llegamos al edificio Nayarit, a un costado del demolido edificio Nuevo León que contiene una historia brutal, y fue protagonista en el horroroso acontecimiento del 19 de septiembre de 1985. Como siempre, él nos espera en la puerta.
+
+Perpetuo es el Bardo Elfo en nuestra compañía, Eme es una Guardabosques Humana, Enedina una Clériga Half\-ling, Fiacro un Paladín Enano y Arsenio es el Mago Gnomo. Su servidor es el maestro del calabozo. Como somos algo viejos, solo conocemos la primera edición, que adquirí en un viaje de vacaciones a Estados Unidos; Son puras copias, y que hoy, por el paso del tiempo adquirieron su tono amarillento. Hemos escuchado rumores, de nuevas generaciones, que existen versiones actualizadas, pero preferimos jugar esa.
+
+Siempre jugamos módulos de Ravenloft, ya que a todos nos encanta lo paranormal. Antes de iniciar, contamos historias o leyendas urbanas de fantasmas que habitan aquí en el complejo, para entrar en atmosfera. Nos preparamos para jugar; Pero estamos tan emocionados, que olvidamos cenar. Tratamos de poner música ambiental, pero el sonido de unas bocinas enormes montadas en tripíes no lo permiten. Le conectan un cubo alargado y reproduce horas de música “Moderna”. Arsenio, se asomó por el resquicio de la puerta y vio en el pasillo la bocina. De casualidad entre sus sortilegios, estaba preparado en su libro de conjuros el de lanzar objeto; Como broma, lanzó el hechizo dirigido a la bocina y esta cayó de costado.
+
+Todos quedaron sorprendidos. Yo no, algo en mi ser, me dice que esto sucedería. Arsenio siguió lanzando sus conjuros, con el fin de asustar a los vecinos y permitieran seguir nuestro juego, primero luces danzantes, después sonidos fantasmales. Lo logró…, se fueron.
+
+Asombrados mis amigos observaron el avance de Arsenio. Querían intentar lo mismo, pero nadie se sentía con la capacidad de hacerlo. Espero tarden más en descubrir que tienen los mismos talentos. Quiero decirles que yo sé el por qué, pero no puedo recordarlo.
+
+Entre conjuros, magias y hechizos, seguimos jugando la partida de rol, hasta el amanecer; derrotando vampiros, fantasmas y un enorme Dracolich. Pero como sucede todas las semanas, exactamente a las 07:17:49, el piso comenzó a sacudirse, las lámparas se mecían con vaivén hipnótico, puertas y ventanas emitieron un fatal crujido. Se desplomó el techo y el terror nos aprisionó. El ambiente se vuelve oscuro, lleno de polvo, una presión en el cuerpo nos atrapa. Arsenio en su afán de protegernos lanzó un hechizo de intermitencia, para hacernos desaparecer. Mientras Enedina, completamente aterrada, con sus ojos cerrados, en su deseo de cuidarnos, de manera ininteligible lanzó el conjuro de sanar Heridas. Recuerdo que será una sensación pasajera y no sucederá nada.
+
+Abro los ojos y aparezco en mi departamento indemne, en el edificio Nuevo León. Lo noto diferente, etéreo, onírico, diáfano; estoy cubierto de polvo. Comienzo a recordar que estábamos aquí jugando cuando todo se vino abajo. No somos lo que éramos antes, dejamos de existir en ese plano. Lo descubrí hace años y me siento mal por no decírselo a mis amigos, siempre se me olvida. Me he enterado por los susurros de la gente que viajan por el viento, que en el departamento abandonado de Fiacro habitan fantasmas. Se hacen apuestas para ver quién puede durar una noche ahí, en especial los miércoles para amanecer jueves, cuando se incrementan las actividades paranormales. Muchachos llevan sus bocinas, para tratar de pasar la noche, pero nunca lo han logrado.
+
+Espero que mis amigos tarden más en descubrir lo que son. Por más que hago ejercicios de mnemotecnia para recordar y explicarles todo, mi mente se confunde. Es tanta la emoción de reunirme con ellos que una ansiedad me embarga y comienzo a olvidar todo. Ahora mi mente está en blanco y parece una eternidad esperar hasta el miércoles, para verlos en la siguiente partida.
+
+\articulo{Ten Candles}{Alejandro}
+
+\begin{figure}[h]
+  \centering
+  \noindent\includegraphics[width=0.65\linewidth,keepaspectratio]{candle.png}
+\end{figure}
+
+Fuego, a través del tiempo el hombre se ha juntado alrededor de fogatas, antorchas, y velas para descansar un momento, contar entretenidas historias, y por supuesto; para encontrar refugio en medio de la obscuridad. Pero esos tiempos han pasado, la luz eléctrica le ha quitado cierto misticismo al mundo y es aquí donde entra 10 velas, un juego de rol que está dispuesto a devolverle su peligro a la obscuridad, creando un velo espeso más allá de donde se atreva a llegar la luz, llenándola de su propia fauna y flora, pues no hay nada que aprecie más la noche, como sus mimadas y peligrosas criaturas.
+
+Ten candles es un juego de rol de carácter cooperativo donde los jugadores, por medio de 10 velas y 10 dados, tienen la oportunidad de vivir una historia de terror. Sus reglas, son pocas y simples, al fin y al cabo, si bajaras la cabeza para leer un manual cuando te lanzan un cuchillo, podría resultar en tu muerte. Lo más importante que me gustaría transmitir con este texto es que este sistema es perfecto para jugadores nuevos que estén dispuestos a explotar su imaginación; al no tener que aprender sobre clases, razas, o poderes especiales el jugador solo tiene que concentrarse en lo que sucede a su alrededor y lo único que necesita el director de juego es una poderosa herramienta, la pregunta: “qué quieres hacer?”. He estado jugando juegos de rol por poco tiempo, y nunca tuve el valor o el interés de dirigir uno, pero ten candles con su simpleza de mecanismos y lo macabro de su ambiente era la tentación que necesitaba para intentarlo.
+
+En mi primer juego como director sufrí mucho pensando en los momentos de paz de mis jugadores “momentos que sirven para recompensar a los jugadores , si se logran dentro de la historia” estos deberían de buscarlos ellos, pero pronto me di cuenta que si quería que llegaran a ellos el que tendría que buscar la escena sería yo, uno de mis jugadores tenía la esperanza escuchar el trino de los pájaros, “PAJAROS” en un mundo obscuro donde todo posiblemente se ha muerto, este hombre sentiría paz al volver a escuchar pájaros, tarde o temprano la oportunidad tendría que llegar, y pedro se la encontró en una habitación en medio de la nada dentro de un edificio en ruinas donde la estática de una televisión lo hipnotizo, en ese momento pedro tiró sus dados y encontró la paz en una alucinación llena de pasto verde, colinas hermosas, un sol radiante y por supuesto pájaros, esto no solo emocionó al ya bastante golpeado pedro, sino que me dio a mi lo que había estado buscado toda la partida, un enemigo, un malo final; pues verán diez velas es un juego de narración cooperativa, tu como director sabes donde comienzan los jugadores, ya sea porque usaste uno de los prólogos del manual o porque decidiste crear uno, pero el final es incierto, tu solo presentas situaciones arreglas consecuencias y depende de los jugadores lo que decidan hacer así que el final va siendo tejido por todos al tiempo que lentamente las velas se van apagando y la obscuridad va extendiendo su reinado, cuando terminó esa partida pedro y sus amigos habían tenido que enfrentarse a un monstruo que acechaba detrás de las pantallas con sus poderes psíquicos y yo había encontrado un amor absoluto por este juego de rol.
+
+Si sientes un amor por el terror al igual que yo, o solo quieres pasar unos buenos sustos con un grupo de amigos entonces por favor apaga las luces, y prende una de las diez velas
+
+\articulo{¿Cómo es ser novia de un DM?}{Aztharthea}
+
+\begin{center}
+  \noindent\includegraphics[width=10cm]{noviadm.png}
+\end{center}
+
+Ser novia o novio de un DM no es nada fácil, créeme, si tu eres novio o novia de DM me comprenderás mejor que nadie. Empezando por si tu conoces el mundo D\&D o no, porque si no lo conoces, como es mi caso, poco a poco te ves envuelto en un mar de emociones e ideas que no comprendes. Lo ves realmente afligido por como nombrar al Goblin No. 85, si lo llama Pinkiew no suena terrorífico y no es una opción viable, pero ponerle Crowwen no puede ser porque así se llama un NPC. Mientras tanto tú te preguntas ¿Qué es un Goblin? o ¿Qué diantres significa un NPC?
+
+Poco a poco te va introduciendo en ese fascinante mundo del rol, comienzas a comprender y a ayudarle a crear historias ¿Cómo hacer que la Party se interese en la historia? O ¿Sobre qué hacer el Oneshot? Al verlo tan feliz, tan entusiasmado por mostrarte su mundo, por desarrollar todo lo que imagina en su cabeza, sus ideas y sus ilusiones, te adentras tanto en los diferentes escenarios que te plantea que te sientes dentro de ese mundo.
+
+Empecé por no saber nada de D\&D y ahora me encantaría ser parte de una mesa para poder compartir con él mis propias aventuras, mis roladas fallidas o mis 20 naturales estando en medio de una batalla con una vaca zombi a mitad de una caverna, junto a un pueblo fantasma.
+
+Ser novia de un DM te provoca estar en una ruleta de emociones junto con él ¿Cómo le fue en su partida? ¿si sus jugadores disfrutan su mesa? Y si no es así deseas golpearlos, por que sabes todo el empeño que le pone a sus campañas. Ser novia de un DM es una de las mejores experiencias que he tenido, exceptuando cuando prefiere terminar su campaña que hacer el delicioso…
+
+Anímense chicas/os, los DMs son detallistas creativos y sensuales, muy sensuales. ¡¡¡Aparte mientras ellos juegan ustedes pueden aprovechar el tiempo, saben a qué me refiero!!! (Guiño, Guiño).
+
+\articulo{La Batalla de Tolosa - Parte 1}{WarMike}
+\begin{center}
+  \textit{Un poderoso liche y su séquito logra convocar a Tiamat, y un grupo de experimentados aventureros contrata mercenarios para intentar detenerlo en una última batalla frontal.}
+\end{center}
+
+La flecha del elfo arquero Pigauss, atravesó el claro de estepa que era el valle de Tolosa para enterrarse en la frente de un guerrero enemigo que salía de entre los arbustos del otro lado. La horda comenzaba a fluir de entre la arboleda acompañándose por los sonidos de tambores y cánticos profanos en una escala frígida.
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \noindent\includegraphics[width=0.48\textwidth]{tolosa1.png}
+  \end{center}
+\end{wrapfigure}
+
+Ya sus compañeros guerreros: Krako, el orco monje; Killmer, el humano porcótropo; y Gatsu, el espadachín humano. De pie a unos metros de él empezaban a desenvainar sus hojas, viendo con terror la superioridad numérica del enemigo al dirigir una tímida mirada a su guarnición, ninguno tenía el valor para contarlos. Eran demasiado pocos.
+
+El movimiento de la guarnición en la retaguardia era todo lo contrario al frente estático, órdenes eran gritadas por todos lados y el movimiento era la norma. De entre todos era la voz de un Sátiro la que orquestaba toda la maquinaria de guerra.
+
+\clearpage
+
+-\textit{¡Alister, Toma a tus hombres e instalen las balistas por allá! ¡Amy, necesito que defiendas a la bruja! ¡Nephrem, no te separes de Amy! ¡¿Dónde está Fandel?!} - El líder Karam, el sátiro, gritaba órdenes y miró dentro de la arboleda buscando a su lobo terrible .
+
+-\textit{¡¿Killmer, Pigauss, Dónde están los lobos?!} -Killmer ya estaba impaciente por entrar en batalla.
+
+-\textit{Están con Fandel, no sé, estoy ocupado.} - Contestó Killmer sin quitarle los ojos de encima al enemigo.
+
+-\textit{Garra blanca está con Fandel también... }- Dijo mientras otra flecha acertaba en el pecho de otro enemigo.
+
+Cómo si los lobos hubieran escuchado a sus compañeros, un aullido empezó a ganar volúmen en el bosque. El aullido comenzó con una voz estridente y ronca y uno a uno los lobos comunes comenzaron a unirse. Contaron hasta siete voces. Los lobos. Los lobos eran la última esperanza de la resistencia.
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+  \begin{center}
+    \noindent\includegraphics[width=0.48\textwidth]{tolosa2.png}
+  \end{center}
+\end{wrapfigure}
+
+Dentro de los pensamientos de Gatsu, había un poco de culpa. \textit{“Sabía lo que se venía”}. Habían escuchado rumores pero no los tomaron en serio. \textit{“No hicimos nada”}. Y ahora tenían que hacer lo imposible para detenerlo, \textit{“Zodia Ariancelli. ¿Cómo pasó?”}. Como un efecto dominó con piezas cada vez más y más grandes, el plan del hechicero carmesí , Zodia se llevó a cabo jugada a jugada sin contratiempos. Él parecía estar en todos lados primero que ellos mismos, estableció relaciones, buscó prestamistas, hizo inversiones, plantó amistades políticas… Parecía imparable. Fundó un culto y lo hizo crecer. \textit{“¿Dónde estábamos? ¿Por qué no lo desmantelamos antes?”}. Generó un séquito y logró su objetivo... \textit{“Ya puedo ver las alas en el horizonte”}
+
+El cielo era color sangre y fuego. Era medio día y se sentía un ambiente oscuro y completamente desesperanzador, las llamas empezaban a avanzar por el bosque de donde venían los enemigos. Tan altas que el calor se podía sentir del otro lado del valle, y la luz se alzaba como una columna naranja de humo, rodeando todo a su alrededor... \textit{“Nos están rodeando con fuego”}.
+
+-\textit{¡Nos están rodeando con fuego!}- Anunció Gatsu en cuanto lo notó. Pero no era todo lo que veía a través del humo y las llamas. También vio las sombras gigantescas y aladas de los tres dragones mayores, surcando los cielos impacientes a la orden de ataque de su madre... Y al fondo, ominosa, elegante y fatal, estaba la madre de los dragones, avanzando sin prisa y parsimoniosamente entre el fuego, el humo y la destrucción.
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \noindent\includegraphics[width=0.48\textwidth]{tolosa3.png}
+  \end{center}
+\end{wrapfigure}
+
+Los enemigos ya estaban de su lado del riachuelo. Killmer, Krako y Gatsu levantaron sus armas. Desde el flanco derecho, y sin previo aviso, tres unidades de infantería pesada caen a la carga contra los desorganizados enemigos. Una flecha llameante de Pigauss dirigió una lluvia de flechas que mermaron a los más retrasados.
+
+La lucha se empezó a encarnar, y las unidades aliadas empezaban a hacer retroceder al enemigo… Cuando de entre el humo, una llamarada del tamaño y la forma de una ballena eliminó a aliados y enemigos por igual. Y de entre el caos humeante, un gigantesco hocico reptiliano asomó entre el humo, y detrás, unos ojos encendidos con el color del hierro fundido sonreían maliciosamente, fijos en los tres guerreros que lo desafiaban de pie. A Dosphiat, el dragón rojo, sólo sus mayores tenían la osadía de mirarlo a los ojos. Estos tres, parecían no conocer esta regla. Pero su desconocimiento de una ley, no los exime de su cumplimiento, y de su respectivo y exagerado castigo.
+
+-\textit{¡Karam! ¡Ya es hora!}- Gritó Krako.
+
+-\textit{¡Nephrem!}- Gritó Killmer.
+
+La orden llegó y se ejecutó casi al instante.Tanto la bruja Nephrem como el sátiro Karam comenzaron a conjurar en sincronización un sortilegio, uno para cada.
+
+\begin{center}
+  \large\textit{Continuara...}
+\end{center}
+
+\begin{flushright}
+\begin{minipage}{0.5\textwidth}
+  \textbf{Creditos:}
+  \begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \item Autor(es): WarMike
+    \item Edición: Aedaniel, RayGV
+    \item Ilustraciones: WarMike, victorzluna
+  \end{itemize}
+  \textbf{Redes:}
+  \begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \item \url{www.instagram.com/miniaturasartesanales}
+    \item \url{www.instagram.com/victorzluna}
+  \end{itemize}
+\end{minipage}
+\end{flushright}
+
+\chapter{GRÁFICA}
+
+\begin{center}
+  \noindent\includegraphics[width=15cm,keepaspectratio]{grafica.png}
+\end{center}
+
+\articulo{Girl}{Nan}[][][https://www.instagram.com/nan_1995/]
+\begin{center}
+  \noindent\includegraphics[width=15cm,keepaspectratio]{girl.jpg}
+\end{center}
+
+\articulo{El Salto Mágico}{Julieta Cosmos}
+\begin{center}
+  \noindent\includegraphics[width=15cm,keepaspectratio]{saltoMagico.jpg}
+\end{center}
+
+\articulo{Solo de Paso}{María Yazmin Velázquez López (mavel)}
+\begin{center}
+  \noindent\includegraphics[width=15cm,keepaspectratio]{dePaso.jpg}
+\end{center}
+
+\chapter{AVENTURA}
+
+\begin{center}
+  \noindent\includegraphics[width=15cm,keepaspectratio]{aventura.png}
+\end{center}
+
+\articulo{Glib - Mastica Cenizas}{Jorge Elandre}
+
+\begin{center}
+  \noindent\includegraphics[width=10cm,keepaspectratio]{glib.png}
+\end{center}
+
+Glib nació pequeño incluso para los estándares de los goblins. Débil y carente de habilidades especiales, su destino habría sido uno de abuso a manos de los demás miembros de su tribu. Ese destino cambió cuando un comerciante, cansado de los saqueos de los goblins, contrató a un grupo de magos para que acabaran con la tribu. Los magos cumplieron su trabajo blandiendo todo tipo de hechizos de fuego. Todos los goblins fueron exterminados a excepción de Glib que solo sobrevivió porque los demás goblins lo habían forzado a dormir en las afueras de su territorio. Desde su escondrijo observo todo y al ver las pieles hervir, al escuchar los gritos de dolor y pánico, Glib descubrió una emoción que nunca antes había sentido, felicidad. Era la cosa más hermosa que había visto jamás.
+
+En soledad Glib camino entre los restos de lo que había sido su hogar y se sintió renacido. Tomó un manojo de cenizas aun incandescentes y marco su rostro para nunca olvidar la sensación de las llamas.  Después de eso, Glib paso años experimentando como aprovechar todo lo que le rodeaba para crear y controlar infiernos de fuego y humo. Satisfecho con su conocimiento, se dedicó a usar sus descubrimientos para controlar y unificar a las tribus goblin y las entrenó para propagar las llamas a través de la tierra.
+
+Glib puede ser actuado de muchas maneras, desde un carismático líder de un culto dedicado al fuego hasta un psicópata auto destructivo. Su mayor atractivo como villano es su falta de lógica, no desea tesoros, recompensas o títulos, solo sembrar destrucción y fuego a su paso.
+
+Esto puede plantear un reto interesante para la party ya que no solo tienen que lidiar con los goblins sino que también tienen que considerar a su fuego, evitando que las llamas consuman al pueblo entero, tratando de salvar a las cosechas antes de un crudo invierno, incluso puede que su introducción sea mucho mas impactante cuando una noche despiertan en una taberna engullida por las llamas y el humo.
+
+Está en tus manos decidir cuantos goblins están al mando de Glib y como ha organizado su plan de caos, si tienen criaturas bajo su control como salamandras de fuego y si los goblins obedecen por convicción o por simple terror.
+
+\articulo{Thrall hijo de Thrall, hijo de Thrall}{Miguel Andrade}
+\begin{center}
+  \noindent\includegraphics[width=10cm,keepaspectratio]{thrall.png}
+\end{center}
+
+Todo bardo que merezca ser llamado bardo conoce obras como “El comerciante de Sescik” que trae carcajadas y alegría o “La tragedia de Darnell” que convierte a audiencias enteras en masas sollozantes. Estas y otras obras legendarias fueron escritas por un autor que solo firmaba con la letra T. Esa letra ha causado días enteros de debates y discusiones ¿es una sola persona o un grupo de ellas? ¿Será un elfo un gnomo? ¿Por qué mantener su identidad como un misterio?
+
+Solo un reducido y selecto grupo de personas conocen la verdadera identidad de T, Thrall hijo de Thrall, hijo de Thrall, un orco que firma de esa manera para ahorrar tinta.
+
+Thrall ha cuidado su anonimato ya que detesta las reuniones sociales y nada le disgusta mas que ver como representan sus obras. Su editor ha ayudado a este proceso sembrando extraños rumores alrededor de él y su obra. A pesar de la fama y riqueza Thrall está inquieto, siente que su arte se ha estancado y ahora está en búsqueda de inspiración para crear una gran odisea, su magnum opus, una obra maestra de aventura.
+
+\noindent\textbf{¿Cómo usar a Thrall en tu mesa?}
+
+Thrall ha escuchado de las hazañas de la party y los ha invitado a una cena a través de una carta sellada con su enigmática “T”. La cena en realidad es una serie de pruebas hechas para ver como reaccionaran los héroes y para tomar notas para su próxima obra.
+
+Un grupo de bardos, cansados de competir con Thrall, han puesto una gran recompensa por su cabeza. Su identidad es por ahora un secreto, pero es solo cuestión de tiempo antes de que lo localicen los caza recompensas y asesinos. Su editor ha pedido la ayuda a la party para proteger al dramaturgo.
+La party encuentra un fragmento de información que necesitan ( el inicio de una profecía, parte de la respuesta de un antiguo acertijo, las primeras palabras mágicas de un encantamiento) en una de las obras de T y ahora tienen que localizar al orco para que les de el resto de la información.
+
+\chapter{Staff}
+\pagenumbering{Roman}
+\setcounter{page}{7}
+{\parindent0pt
+
+\textbf{\textit{El Craneo Felíz es traído a ti por los pequeños obreros:}}
+\begin{itemize}
+  \item Jefe de Redacción e Ilustraciones - Terry Vazquez
+  \item Redes y Medios - Ayathara
+  \item Editor Digital - Dark Skoll
+\end{itemize}
+
+%\vspace{1em}
+
+\textbf{\textit{Nuestras Redes Sociales:}}
+
+%\vspace{1em}
+
+\begin{tabular}{ l l }
+  \textbf{Facebook} & \url{www.facebook.com/elcraneofeliz}\\
+  \textbf{Instagram} & \url{www.instagram.com/el_craneo_feliz/}\\
+  \textbf{Issuu} & \href{https://issuu.com/elcraneofeliz}{issuu.com/elcraneofeliz}\\
+  \textbf{Correo} & \href{mailto:conserjedelcalabozo@gmail.com}{conserjedelcalabozo@gmail.com}\\
+\end{tabular}
+
+%\vspace{1em}
+
+\begin{center}
+  \textit{"No dejamos de jugar porque nos volvamos viejos, nos volvemos viejos porque dejamos de jugar"}
+\end{center}
+\begin{flushright}
+  \textit{- George Bernard Shaw}
+\end{flushright}
+
+\begin{center}
+  \noindent\includegraphics[keepaspectratio,width=6cm]{staff.png}
+\end{center}
+}
+
+
+\newgeometry{margin=0cm}
+\ponerFondoSimple
+\thispagestyle{empty}
+\hspace{0pt}
+\vfill
+\begin{center}
+  \noindent\includegraphics[width=\paperwidth]{contraportada.png}
+\end{center}
+\vfill
+\hspace{0pt}
+
+
+\end{document}
